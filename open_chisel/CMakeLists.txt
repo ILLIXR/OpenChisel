@@ -1,8 +1,30 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 2.8.8)
+
 project(open_chisel)
- 
-if (DEFINED CATKIN_TOPLEVEL OR (NOT ("$ENV{ROS_DISTRO}" STREQUAL "fuerte")))
-    include(${PROJECT_SOURCE_DIR}/catkin.cmake)
-else ()
-    include(${PROJECT_SOURCE_DIR}/rosbuild.cmake)
-endif ()
+
+find_package(Eigen3 REQUIRED)
+include_directories(${EIGEN3_INCLUDE_DIRS})
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --std=c++17")
+
+include_directories(include)
+
+add_library(open_chisel_lib 
+	src/Chunk.cpp 
+	src/ChunkManager.cpp 
+	src/DistVoxel.cpp  
+	src/ColorVoxel.cpp
+	src/geometry/AABB.cpp
+	src/geometry/Plane.cpp
+	src/geometry/Frustum.cpp
+	src/camera/Intrinsics.cpp
+	src/camera/PinholeCamera.cpp
+	src/pointcloud/PointCloud.cpp
+	src/ProjectionIntegrator.cpp
+	src/Chisel.cpp
+	src/mesh/Mesh.cpp
+	src/marching_cubes/MarchingCubes.cpp
+	src/io/PLY.cpp
+	src/geometry/Raycast.cpp)
+
+add_library(plugin SHARED src/plugin.cpp)
+target_link_libraries(plugin open_chisel_lib)
