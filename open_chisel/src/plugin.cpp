@@ -54,8 +54,17 @@ public:
 		// Convert depth_img to OpenChisel DepthImage
 		// Pass converted depth and rgb image and SLAM pose to OpenChisel
 		// May not want to use color
+
+		// This may be unnecessary. Could use ChiselServer.h and modify it to work with ILLIXR.
+		// Key Function:
+		// https://github.com/personalrobotics/OpenChisel/blob/30a1a7af58cdb773e8e24f86c255f35f1c163237/chisel_ros/src/ChiselServer.cpp#L420
+
+		// chisel::ChiselPtr chiselMap
+		
 		// chiselMap->IntegrateDepthScanColor<DepthData, ColorData>(projectionIntegrator,  lastDepthImage, depthCamera.lastPose, depthCamera.cameraModel, lastColorImage, colorCamera.lastPose, colorCamera.cameraModel);
 		// chiselMap->UpdateMeshes();
+
+
 	}
 
 	virtual ~open_chisel() override {}
