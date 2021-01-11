@@ -56,8 +56,12 @@ public:
 		// May not want to use color
 
 		// This may be unnecessary. Could use ChiselServer.h and modify it to work with ILLIXR.
-		// Key Function:
+		// Key Functions/Lines:
 		// https://github.com/personalrobotics/OpenChisel/blob/30a1a7af58cdb773e8e24f86c255f35f1c163237/chisel_ros/src/ChiselServer.cpp#L420
+		// https://github.com/personalrobotics/OpenChisel/blob/30a1a7af58cdb773e8e24f86c255f35f1c163237/chisel_ros/src/ChiselNode.cpp#L137
+		// https://github.com/personalrobotics/OpenChisel/blob/30a1a7af58cdb773e8e24f86c255f35f1c163237/chisel_ros/include/chisel_ros/ChiselServer.h#L88
+
+		// ROS nodeHandle is what we need to replace with ILLIXR stuff inside of ChiselServer
 
 		// chisel::ChiselPtr chiselMap
 		
